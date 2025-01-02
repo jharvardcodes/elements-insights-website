@@ -25,13 +25,21 @@ import { FaBuilding, FaHome, FaStore, FaWarehouse } from 'react-icons/fa';
 import { useConsultationForm } from '../services/formService';
 
 interface FormData {
-  propertyType: string;
-  propertyCount: number;
-  location: string;
+  needs: string[];
+  employeeCount: number;
+  projectsPerMonth: number;
   challenges: string[];
   timeline: string;
-  budget: number;
-  experience: number;
+  currentSoftware: string;
+  socialMedia: {
+    facebook: string;
+    instagram: string;
+    linkedin: string;
+    twitter: string;
+    website: string;
+  };
+  budget: string;
+  availability: string;
   contactName: string;
   contactEmail: string;
   contactPhone: string;
@@ -39,13 +47,21 @@ interface FormData {
 }
 
 const initialFormData: FormData = {
-  propertyType: '',
-  propertyCount: 1,
-  location: '',
+  needs: [],
+  employeeCount: 1,
+  projectsPerMonth: 1,
   challenges: [],
   timeline: '',
-  budget: 5000,
-  experience: 0,
+  currentSoftware: '',
+  socialMedia: {
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    twitter: '',
+    website: '',
+  },
+  budget: '',
+  availability: '',
   contactName: '',
   contactEmail: '',
   contactPhone: '',
@@ -75,8 +91,8 @@ const ConsultationPage: React.FC = () => {
     try {
       const formDataObj = {
         ...formData,
+        needs: formData.needs.join(', '),
         challenges: formData.challenges.join(', '),
-        budget: `$${formData.budget.toLocaleString()}`
       } as { [key: string]: any };
 
       await handleSubmit(formDataObj);
@@ -98,20 +114,20 @@ const ConsultationPage: React.FC = () => {
     }
   };
 
-  const propertyTypes = [
-    { icon: <FaHome />, label: 'Residential', value: 'residential' },
-    { icon: <FaBuilding />, label: 'Commercial', value: 'commercial' },
-    { icon: <FaStore />, label: 'Retail', value: 'retail' },
-    { icon: <FaWarehouse />, label: 'Industrial', value: 'industrial' },
+  const needsOptions = [
+    { label: 'Abatements', value: 'abatements' },
+    { label: 'Permits & Licensing', value: 'permits-licensing' },
+    { label: 'Office Support', value: 'office-support' },
   ];
 
   const challengeOptions = [
-    { label: 'Tax Assessment Issues', value: 'tax' },
-    { label: 'Permit Compliance', value: 'permits' },
-    { label: 'Rental Licensing', value: 'rental' },
-    { label: 'Property Violations', value: 'violations' },
-    { label: 'Legal Disputes', value: 'legal' },
-    { label: 'Property Management', value: 'management' },
+    { label: 'Abatements', value: 'abatements' },
+    { label: 'Permits', value: 'permits' },
+    { label: 'Licensing', value: 'licensing' },
+    { label: 'Employee Turnover', value: 'employee-turnover' },
+    { label: 'Office Support', value: 'office-support' },
+    { label: 'Eviction Filing/Court', value: 'eviction' },
+    { label: 'Task Management', value: 'task-management' },
   ];
 
   const timelineOptions = [
@@ -123,7 +139,7 @@ const ConsultationPage: React.FC = () => {
 
   const steps = [
     {
-      label: 'Property Details',
+      label: 'Needs',
       content: (
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -131,44 +147,68 @@ const ConsultationPage: React.FC = () => {
           exit={{ opacity: 0, x: -20 }}
         >
           <Typography variant="h6" gutterBottom>
-            What type of property do you own or manage?
+            What are your needs?
           </Typography>
-          <Box sx={{ 
-            display: 'grid', 
-            gridTemplateColumns: { 
-              xs: 'repeat(1, 1fr)', // Single column on mobile
-              sm: 'repeat(2, 1fr)', // Two columns on tablet
-              md: 'repeat(4, 1fr)'  // Four columns on desktop
-            }, 
-            gap: 2, 
-            my: 3 
-          }}>
-            {propertyTypes.map((type) => (
-              <Paper
-                key={type.value}
-                sx={{
-                  p: 2,
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  border: formData.propertyType === type.value ? 2 : 1,
-                  borderColor: formData.propertyType === type.value ? 'primary.main' : 'divider',
-                  '&:hover': { borderColor: 'primary.main' },
-                }}
-                onClick={() => setFormData({ ...formData, propertyType: type.value })}
-              >
-                <Box sx={{ fontSize: '2rem', mb: 1 }}>{type.icon}</Box>
-                <Typography>{type.label}</Typography>
-              </Paper>
+          <FormGroup>
+            {needsOptions.map((option) => (
+              <FormControlLabel
+                key={option.value}
+                control={
+                  <Checkbox
+                    checked={formData.needs.includes(option.value)}
+                    onChange={(e) => {
+                      const newNeeds = e.target.checked
+                        ? [...formData.needs, option.value]
+                        : formData.needs.filter((c) => c !== option.value);
+                      setFormData({ ...formData, needs: newNeeds });
+                    }}
+                  />
+                }
+                label={option.label}
+              />
             ))}
-          </Box>
-          
+          </FormGroup>
+
           <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
-            How many properties are you looking to get help with?
+            How many employees do you have?
           </Typography>
           <Box sx={{ px: { xs: 3, sm: 5 }, mt: 4, mb: 2 }}>
             <Slider
-              value={formData.propertyCount}
-              onChange={(_, value) => setFormData({ ...formData, propertyCount: value as number })}
+              value={formData.employeeCount}
+              onChange={(_, value) => setFormData({ ...formData, employeeCount: value as number })}
+              min={1}
+              max={20}
+              marks={[
+                { value: 1, label: '1' },
+                { value: 5, label: '5' },
+                { value: 10, label: '10' },
+                { value: 20, label: '20' },
+              ]}
+              sx={{
+                '& .MuiSlider-markLabel': {
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                },
+                '& .MuiSlider-mark': {
+                  backgroundColor: '#fff',
+                  height: 8,
+                  width: 1,
+                  '&.MuiSlider-markActive': {
+                    opacity: 1,
+                    backgroundColor: 'currentColor',
+                  },
+                },
+              }}
+            />
+          </Box>
+
+          <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+            How many projects do you have per month?
+          </Typography>
+          <Box sx={{ px: { xs: 3, sm: 5 }, mt: 4, mb: 2 }}>
+            <Slider
+              value={formData.projectsPerMonth}
+              onChange={(_, value) => setFormData({ ...formData, projectsPerMonth: value as number })}
               min={1}
               max={20}
               marks={[
@@ -251,7 +291,7 @@ const ConsultationPage: React.FC = () => {
       ),
     },
     {
-      label: 'Experience & Budget',
+      label: 'Software & Social Media',
       content: (
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -259,42 +299,142 @@ const ConsultationPage: React.FC = () => {
           exit={{ opacity: 0, x: -20 }}
         >
           <Typography variant="h6" gutterBottom>
-            How would you rate your experience with property management?
+            What software are you currently using?
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-            <Rating
-              value={formData.experience}
-              onChange={(_, value) => setFormData({ ...formData, experience: value || 0 })}
-              max={5}
-              size="large"
-            />
-            <Typography sx={{ ml: 2 }} color="text.secondary">
-              {[
-                'No experience',
-                'Beginner',
-                'Some experience',
-                'Experienced',
-                'Very experienced',
-              ][formData.experience - 1] || 'Select your experience level'}
-            </Typography>
-          </Box>
+          <TextField
+            fullWidth
+            label="Software"
+            value={formData.currentSoftware}
+            onChange={(e) => setFormData({ ...formData, currentSoftware: e.target.value })}
+            margin="normal"
+          />
 
+          <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+            What are your social media profiles?
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <TextField
+              fullWidth
+              label="Facebook"
+              InputProps={{
+                startAdornment: (
+                  <Typography color="text.secondary" sx={{ mr: 1 }}>
+                    facebook.com/
+                  </Typography>
+                ),
+              }}
+              value={formData.socialMedia.facebook}
+              onChange={(e) => setFormData({
+                ...formData,
+                socialMedia: { ...formData.socialMedia, facebook: e.target.value }
+              })}
+              placeholder="your.page.name"
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Instagram"
+              InputProps={{
+                startAdornment: (
+                  <Typography color="text.secondary" sx={{ mr: 1 }}>
+                    instagram.com/
+                  </Typography>
+                ),
+              }}
+              value={formData.socialMedia.instagram}
+              onChange={(e) => setFormData({
+                ...formData,
+                socialMedia: { ...formData.socialMedia, instagram: e.target.value }
+              })}
+              placeholder="your.handle"
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="LinkedIn"
+              InputProps={{
+                startAdornment: (
+                  <Typography color="text.secondary" sx={{ mr: 1 }}>
+                    linkedin.com/company/
+                  </Typography>
+                ),
+              }}
+              value={formData.socialMedia.linkedin}
+              onChange={(e) => setFormData({
+                ...formData,
+                socialMedia: { ...formData.socialMedia, linkedin: e.target.value }
+              })}
+              placeholder="your-company-name"
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Twitter/X"
+              InputProps={{
+                startAdornment: (
+                  <Typography color="text.secondary" sx={{ mr: 1 }}>
+                    twitter.com/
+                  </Typography>
+                ),
+              }}
+              value={formData.socialMedia.twitter}
+              onChange={(e) => setFormData({
+                ...formData,
+                socialMedia: { ...formData.socialMedia, twitter: e.target.value }
+              })}
+              placeholder="your_handle"
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Website"
+              InputProps={{
+                startAdornment: (
+                  <Typography color="text.secondary" sx={{ mr: 1 }}>
+                    https://
+                  </Typography>
+                ),
+              }}
+              value={formData.socialMedia.website}
+              onChange={(e) => setFormData({
+                ...formData,
+                socialMedia: { ...formData.socialMedia, website: e.target.value }
+              })}
+              placeholder="your-website.com"
+              margin="normal"
+            />
+          </Box>
+        </motion.div>
+      ),
+    },
+    {
+      label: 'Budget & Availability',
+      content: (
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+        >
           <Typography variant="h6" gutterBottom>
             What's your estimated budget for professional services?
           </Typography>
-          <Slider
+          <TextField
+            fullWidth
+            label="Budget"
             value={formData.budget}
-            onChange={(_, value) => setFormData({ ...formData, budget: value as number })}
-            min={1000}
-            max={50000}
-            step={1000}
-            marks={[
-              { value: 1000, label: '$1k' },
-              { value: 25000, label: '$25k' },
-              { value: 50000, label: '$50k+' },
-            ]}
-            valueLabelDisplay="auto"
-            valueLabelFormat={(value) => `$${value.toLocaleString()}`}
+            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+            margin="normal"
+          />
+
+          <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+            What's your availability for a consultation?
+          </Typography>
+          <TextField
+            fullWidth
+            label="Availability"
+            value={formData.availability}
+            onChange={(e) => setFormData({ ...formData, availability: e.target.value })}
+            margin="normal"
           />
         </motion.div>
       ),
@@ -308,44 +448,42 @@ const ConsultationPage: React.FC = () => {
           exit={{ opacity: 0, x: -20 }}
         >
           <Typography variant="h6" gutterBottom>
-            How can we reach you?
+            Please provide your contact information
           </Typography>
-          <Box component="form" sx={{ mt: 3 }}>
-            <TextField
-              fullWidth
-              label="Name"
-              value={formData.contactName}
-              onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-              margin="normal"
-              required
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              type="email"
-              value={formData.contactEmail}
-              onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
-              margin="normal"
-              required
-            />
-            <TextField
-              fullWidth
-              label="Phone"
-              value={formData.contactPhone}
-              onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Additional Information"
-              multiline
-              rows={4}
-              value={formData.additionalInfo}
-              onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-              margin="normal"
-              placeholder="Tell us anything else that might help us prepare for our consultation..."
-            />
-          </Box>
+          <TextField
+            fullWidth
+            label="Name"
+            value={formData.contactName}
+            onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+            margin="normal"
+            required
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            type="email"
+            value={formData.contactEmail}
+            onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
+            margin="normal"
+            required
+          />
+          <TextField
+            fullWidth
+            label="Phone"
+            value={formData.contactPhone}
+            onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
+            margin="normal"
+            required
+          />
+          <TextField
+            fullWidth
+            label="Additional Information"
+            multiline
+            rows={4}
+            value={formData.additionalInfo}
+            onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
+            margin="normal"
+          />
         </motion.div>
       ),
     },

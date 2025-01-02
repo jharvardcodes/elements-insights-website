@@ -12,16 +12,12 @@ const HomePage: React.FC = () => {
       description: 'Expert assistance with filing tax abatements for your property investments.',
     },
     {
-      title: 'Permit Services',
-      description: 'Comprehensive permit acquisition services, from EZ permits to complex documentation.',
+      title: 'Permits & Licensing Support',
+      description: 'Get assistance to initiate and acquire EZ Permits, make safes, general contracting & rental licenses',
     },
     {
-      title: 'Rental Licensing',
-      description: 'Streamlined rental license assistance for property managers and landlords.',
-    },
-    {
-      title: 'Legal Support',
-      description: 'Professional support for lease evaluations and court processes.',
+      title: 'Office Management',
+      description: 'Professional support for structure and systems',
     },
   ];
 
@@ -53,10 +49,10 @@ const HomePage: React.FC = () => {
                   gutterBottom
                   sx={{ fontWeight: 700 }}
                 >
-                  Expert Real Estate Support Services
+                  Business Consultant and Expert Business Support Services
                 </Typography>
                 <Typography variant="h5" color="text.secondary" paragraph>
-                  Navigating real estate complexities with professional guidance and reliable solutions.
+                  Navigating business development with professional guidance and reliable solutions.
                 </Typography>
                 <Button
                   variant="contained"
@@ -86,9 +82,9 @@ const HomePage: React.FC = () => {
         >
           Our Services
         </Typography>
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        <Grid container spacing={4} sx={{ mt: 4, justifyContent: 'center' }}>
           {services.map((service, index) => (
-            <Grid item key={service.title} xs={12} sm={6} md={3}>
+            <Grid item key={service.title} xs={12} sm={6} md={4}>
               <MuiCard
                 component={motion.div}
                 initial={{ opacity: 0, y: 50 }}
@@ -117,26 +113,40 @@ const HomePage: React.FC = () => {
             Ready to Get Started?
           </Typography>
           <Typography variant="subtitle1" align="center" paragraph>
-            Let us help you navigate the complexities of real estate management.
+            Let us help you navigate the complexities of business management.
           </Typography>
           <MuiBox sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
             <Button
               variant="outlined"
               color="inherit"
               size="large"
-              onClick={() => navigate('/contact')}
-              sx={{ mx: 1 }}
+              onClick={() => navigate('/consultation')}
+              sx={{ 
+                mx: 1,
+                color: 'white',
+                borderColor: 'white',
+                '&:hover': {
+                  borderColor: 'white',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  color: 'white',
+                },
+              }}
             >
-              Contact Us
+              Schedule a Call
             </Button>
             <Button
               variant="contained"
               color="secondary"
               size="large"
-              onClick={() => navigate('/services')}
-              sx={{ mx: 1 }}
+              onClick={() => navigate('/consultation')}
+              sx={{ 
+                mx: 1,
+                '&:hover': {
+                  backgroundColor: 'secondary.light',
+                },
+              }}
             >
-              View Services
+              Get Started
             </Button>
           </MuiBox>
         </Container>

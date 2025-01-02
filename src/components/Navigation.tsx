@@ -26,6 +26,7 @@ import {
   Description as ResourcesIcon,
   CalendarToday as ConsultationIcon,
   ContactMail as ContactIcon,
+  LocalFireDepartment as CandlesIcon,
   Close as CloseIcon,
 } from '@mui/icons-material';
 import { AnimatePresence } from 'framer-motion';
@@ -72,6 +73,7 @@ const Navigation = (props: Props) => {
     { text: 'About', path: '/about', icon: <InfoIcon /> },
     { text: 'Services', path: '/services', icon: <ServicesIcon /> },
     { text: 'Resources', path: '/resources', icon: <ResourcesIcon /> },
+    { text: 'Candles', path: '/candles', icon: <CandlesIcon /> },
     { text: 'Consultation', path: '/consultation', icon: <ConsultationIcon /> },
     { text: 'Contact', path: '/contact', icon: <ContactIcon /> },
   ];
@@ -136,14 +138,27 @@ const Navigation = (props: Props) => {
       <HideOnScroll {...props}>
         <AppBar position="fixed" elevation={0} 
           sx={{
-            background: 'rgba(255, 255, 255, 0.1)',
+            background: 'rgba(142, 68, 173, 0.95)', // Matching the primary color with some transparency
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)', // For Safari
             borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
             boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-            color: theme.palette.text.primary,
+            color: '#fff',
             '& .MuiToolbar-root': {
               minHeight: { xs: '64px', md: '80px' },
+            },
+            '& .MuiButton-root': {
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              },
+            },
+            '& .MuiIconButton-root': {
+              color: '#fff',
+            },
+            '& .active': {
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              fontWeight: 600,
             },
           }}>
           <Container maxWidth="lg">
@@ -155,15 +170,20 @@ const Navigation = (props: Props) => {
                 to="/"
                 sx={{
                   textDecoration: 'none',
-                  color: theme.palette.primary.main,
-                  fontWeight: 600,
-                  background: 'linear-gradient(45deg, #9c27b0, #673ab7)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  letterSpacing: 1,
-                  fontSize: { xs: '1.2rem', md: '1.5rem' },
+                  color: '#fff',
+                  fontWeight: 700,
+                  letterSpacing: 1.2,
+                  fontSize: { xs: '1.3rem', md: '1.6rem' },
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'inline-block',
+                  padding: '4px 8px',
+                  borderRadius: 1,
+                  transition: 'all 0.2s ease-in-out',
                   '&:hover': {
-                    opacity: 0.9,
+                    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)',
+                    transform: 'scale(1.02)',
                   },
                 }}
               >
@@ -182,34 +202,20 @@ const Navigation = (props: Props) => {
                   {mobileOpen ? <CloseIcon /> : <MenuIcon />}
                 </IconButton>
               ) : (
-                <Box sx={{ ml: 'auto', display: 'flex', gap: 2 }}>
+                <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 2 }}>
                   {navItems.map((item) => (
                     <Button
                       key={item.text}
                       component={Link}
                       to={item.path}
+                      className={isActive(item.path) ? 'active' : ''}
+                      startIcon={item.icon}
                       sx={{
-                        color: theme.palette.text.primary,
-                        position: 'relative',
                         px: 2,
                         py: 1,
-                        '&::after': {
-                          content: '""',
-                          position: 'absolute',
-                          width: '100%',
-                          height: '2px',
-                          bottom: 0,
-                          left: 0,
-                          background: 'linear-gradient(45deg, #9c27b0, #673ab7)',
-                          transform: location.pathname === item.path ? 'scaleX(1)' : 'scaleX(0)',
-                          transition: 'transform 0.3s ease-in-out',
-                        },
-                        '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                        },
-                        '&:hover::after': {
-                          transform: 'scaleX(1)',
-                        },
+                        borderRadius: 1,
+                        fontWeight: isActive(item.path) ? 600 : 400,
+                        transition: 'all 0.2s ease-in-out',
                       }}
                     >
                       {item.text}

@@ -85,14 +85,14 @@ const ContactPage = () => {
     {
       icon: <FaPhone />,
       title: 'Phone',
-      content: '(215) 123-4567',
-      link: 'tel:+12151234567',
+      content: '(267) 449-5925',
+      link: 'tel:+12674495925',
     },
     {
       icon: <FaEnvelope />,
       title: 'Email',
-      content: 'info@elementsinsights.com',
-      link: 'mailto:info@elementsinsights.com',
+      content: 'elementofinsights@gmail.com',
+      link: 'mailto:elementofinsights@gmail.com',
     },
     {
       icon: <FaMapMarkerAlt />,

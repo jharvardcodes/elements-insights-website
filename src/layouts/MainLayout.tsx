@@ -20,9 +20,29 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="body2" color="text.secondary" align="center">
-            {new Date().getFullYear()} Element's Insights LLC. All rights reserved.
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+            <Typography variant="body2" color="text.secondary" align="center">
+              {new Date().getFullYear()} Element's Insights LLC. All rights reserved.
+            </Typography>
+            <Typography variant="body2" color="text.secondary" align="center">
+              Developed with <Box component="span" sx={{ color: '#e91e63' }}>❤️</Box> by{' '}
+              <Box
+                component="a"
+                href="https://intelleadgen.webflow.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: 'primary.main',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                }}
+              >
+                IntelLeadGen Studio
+              </Box>
+            </Typography>
+          </Box>
         </Container>
       </Box>
     </Box>

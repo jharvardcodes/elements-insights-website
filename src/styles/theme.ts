@@ -37,8 +37,9 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Montserrat", "Inter", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Public Sans", "Noto Sans", "Afacad", sans-serif',
     h1: {
+      fontFamily: '"Afacad", "Public Sans", sans-serif',
       fontWeight: 600,
       fontSize: '2.5rem',
       letterSpacing: '0.02em',
@@ -47,18 +48,61 @@ export const theme = createTheme({
       WebkitTextFillColor: 'transparent',
     },
     h2: {
+      fontFamily: '"Afacad", "Public Sans", sans-serif',
       fontWeight: 500,
       fontSize: '2rem',
       letterSpacing: '0.01em',
     },
     h3: {
+      fontFamily: '"Afacad", "Public Sans", sans-serif',
       fontWeight: 500,
       fontSize: '1.75rem',
+      letterSpacing: '0.01em',
+    },
+    h4: {
+      fontFamily: '"Afacad", "Public Sans", sans-serif',
+      fontWeight: 500,
+      fontSize: '1.5rem',
+    },
+    h5: {
+      fontFamily: '"Public Sans", "Noto Sans", sans-serif',
+      fontWeight: 500,
+      fontSize: '1.25rem',
+    },
+    h6: {
+      fontFamily: '"Public Sans", "Noto Sans", sans-serif',
+      fontWeight: 500,
+      fontSize: '1.1rem',
+    },
+    subtitle1: {
+      fontFamily: '"Noto Sans", "Public Sans", sans-serif',
+      fontSize: '1.1rem',
+      letterSpacing: '0.01em',
+      lineHeight: 1.6,
+    },
+    subtitle2: {
+      fontFamily: '"Noto Sans", "Public Sans", sans-serif',
+      fontSize: '1rem',
+      letterSpacing: '0.01em',
+      lineHeight: 1.6,
     },
     body1: {
+      fontFamily: '"Public Sans", "Noto Sans", sans-serif',
       fontSize: '1rem',
-      lineHeight: 1.7,
       letterSpacing: '0.01em',
+      lineHeight: 1.7,
+    },
+    body2: {
+      fontFamily: '"Public Sans", "Noto Sans", sans-serif',
+      fontSize: '0.95rem',
+      letterSpacing: '0.01em',
+      lineHeight: 1.7,
+    },
+    button: {
+      fontFamily: '"Afacad", "Public Sans", sans-serif',
+      fontWeight: 500,
+      letterSpacing: '0.02em',
+      textTransform: 'none',
     },
   },
   components: {

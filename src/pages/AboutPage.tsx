@@ -18,31 +18,46 @@ const AboutPage = () => {
   const stats = [
     {
       icon: <FaBuilding size="2em" />,
-      value: '500+',
-      label: 'Properties Served',
+      value: '200+',
+      label: 'Units Managed',
     },
     {
       icon: <FaHandshake size="2em" />,
-      value: '95%',
-      label: 'Client Satisfaction',
+      value: '10+',
+      label: 'Years Experience',
     },
     {
       icon: <FaChartLine size="2em" />,
-      value: '$2M+',
-      label: 'Tax Savings',
+      value: '100%',
+      label: 'Client Focus',
     },
     {
       icon: <FaUsers size="2em" />,
-      value: '1000+',
-      label: 'Happy Clients',
+      value: '24/7',
+      label: 'Support',
     },
   ];
 
   const leadership = {
     name: 'Crystal Element',
-    role: 'Founder & CEO',
-    image: '/images/team/crystal.jpg',
-    bio: 'Experienced leader in real estate management and property tax consulting, dedicated to delivering exceptional value to clients in the Philadelphia area.',
+    role: 'Solutions Architect | Entrepreneur | Advocate for Efficiency & Growth',
+    image: '/images/headshots/crystal-element-headshots.jpg',
+    bio: 'Crystal Element is a seasoned business operations leader with over a decade of management experience, excelling in driving organizational success through strategic planning, financial oversight, and team leadership. With a proven record of optimizing operations and delivering measurable results, she embodies the qualities of a dynamic and solution-focused professional.',
+    professionalJourney: `Crystal's career spans a diverse range of leadership roles where she has honed her expertise in property management, financial compliance, business development, and operational efficiency. As the current Founder & CEO of Element's Insights LLC, she collaborates with business and property owners, streamlining processes to enhance their success in business development and tenant-landlord relations. Her efforts in training, compliance, and process improvement empower her clients to achieve sustainable growth.
+
+In her previous role, Crystal managed a team and oversaw a portfolio of 200+ rental and renovation units. Her initiatives, such as transitioning to electronic payments, resourcing insurance and mortgages for cost savings and implementing fire safety protocols, have significantly improved operational efficiency and reduced costs.
+
+Crystal had also served as Property Manager, where she led efforts to minimize tenant delinquencies, refine lease agreements, and develop employee training programs. Earlier in her career, she applied her skills to continuous improvement roles, inventory management, and entrepreneurial ventures, such as Chasin' Business LLC, which provided business support services.`,
+    keySkills: [
+      'Business Operations & Development',
+      'Financial Management & Tax Compliance',
+      'Vendor & Client Relationship Management',
+      'Staff Development & Leadership',
+      'Property Management & Compliance',
+      'QuickBooks, Appfolio, Microsoft Office Suite'
+    ],
+    education: 'Bachelor\'s degree in Business Administration with a Management Concentration from the University of Missouri.',
+    personal: 'A true multitasker, Crystal is also a notary, candlemaker, and advocate for animal welfare. She has fostered and rescued dogs, demonstrating her compassion and dedication beyond her professional pursuits. A lover of travel, history, and beach towns, Crystal\'s personal interests reflect her dynamic personality and love for adventure.'
   };
 
   const values = [
@@ -90,7 +105,7 @@ const AboutPage = () => {
               textShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}
           >
-            About Elements Insights
+            About Element's Insights
           </Typography>
           <Typography
             variant="h5"
@@ -103,53 +118,83 @@ const AboutPage = () => {
               textShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}
           >
-            Your trusted partner in Philadelphia real estate management, providing expert guidance
-            and solutions since 2015.
+            Your trusted partner in business operations and development, providing expert guidance
+            and innovative solutions for sustainable growth.
           </Typography>
         </Container>
       </MuiBox>
 
-      {/* Mission Section */}
+      {/* About Crystal Section */}
       <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Grid container spacing={6} alignItems="center">
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={6} alignItems="flex-start">
+          <Grid item xs={12} md={4}>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Typography variant="h3" gutterBottom color="primary">
-                Our Mission
+              <Avatar
+                src={leadership.image}
+                alt={leadership.name}
+                sx={{
+                  width: '300px',
+                  height: '300px',
+                  mx: 'auto',
+                  display: 'block',
+                  mb: 3,
+                  boxShadow: theme.shadows[3],
+                  border: `4px solid ${theme.palette.primary.main}`,
+                  borderRadius: '50%',
+                }}
+              />
+              <Typography variant="h4" gutterBottom color="primary">
+                {leadership.name}
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom color="text.secondary" sx={{ mb: 3 }}>
+                {leadership.role}
               </Typography>
               <Typography variant="body1" paragraph>
-                At Elements Insights, we're dedicated to simplifying the complexities of real estate
-                management for property owners in Philadelphia. Our mission is to provide expert
-                guidance and innovative solutions that help our clients maximize their property
-                investments while ensuring full compliance with local regulations.
-              </Typography>
-              <Typography variant="body1">
-                We combine deep local knowledge with cutting-edge technology to deliver exceptional
-                results, whether you're seeking tax abatements, permit assistance, or comprehensive
-                property management solutions.
+                {leadership.bio}
               </Typography>
             </motion.div>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <img
-                src="/images/about/office.jpg"
-                alt="Elements Insights Office"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: theme.shape.borderRadius,
-                  boxShadow: theme.shadows[3],
-                }}
-              />
+              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 3 }}>
+                Professional Journey
+              </Typography>
+              <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
+                {leadership.professionalJourney}
+              </Typography>
+              
+              <Typography variant="h5" gutterBottom color="primary" sx={{ mt: 4, mb: 2 }}>
+                Key Skills
+              </Typography>
+              <Grid container spacing={2} sx={{ mb: 4 }}>
+                {leadership.keySkills.map((skill, index) => (
+                  <Grid item xs={12} sm={6} key={index}>
+                    <Typography variant="body1">• {skill}</Typography>
+                  </Grid>
+                ))}
+              </Grid>
+
+              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 2 }}>
+                Education
+              </Typography>
+              <Typography variant="body1" paragraph>
+                {leadership.education}
+              </Typography>
+
+              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 2 }}>
+                Beyond the Office
+              </Typography>
+              <Typography variant="body1" paragraph>
+                {leadership.personal}
+              </Typography>
             </motion.div>
           </Grid>
         </Grid>
@@ -222,45 +267,6 @@ const AboutPage = () => {
             </Grid>
           ))}
         </Grid>
-      </Container>
-
-      {/* Leadership Section */}
-      <Container maxWidth="sm" sx={{ mb: 8, textAlign: 'center' }}>
-        <Typography
-          variant="h3"
-          align="center"
-          gutterBottom
-          sx={{ mb: 6 }}
-          color="primary"
-        >
-          Leadership
-        </Typography>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Avatar
-            src={leadership.image}
-            alt={leadership.name}
-            sx={{
-              width: 200,
-              height: 200,
-              mx: 'auto',
-              mb: 3,
-              boxShadow: theme.shadows[3],
-            }}
-          />
-          <Typography variant="h4" gutterBottom>
-            {leadership.name}
-          </Typography>
-          <Typography variant="subtitle1" color="primary" gutterBottom>
-            {leadership.role}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {leadership.bio}
-          </Typography>
-        </motion.div>
       </Container>
     </MuiBox>
   );

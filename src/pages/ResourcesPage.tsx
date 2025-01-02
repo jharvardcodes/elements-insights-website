@@ -6,89 +6,114 @@ import {
   Grid,
   Card,
   CardContent,
-  CardMedia,
   Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  useTheme,
   Link,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { FaDownload, FaChevronDown, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ResourcesPage: React.FC = () => {
-  const theme = useTheme();
-  const [expandedFaq, setExpandedFaq] = useState<string | false>(false);
-
-  const handleFaqChange = (panel: string) => (
-    _event: React.SyntheticEvent,
-    isExpanded: boolean
-  ) => {
-    setExpandedFaq(isExpanded ? panel : false);
-  };
-
-  const resources = [
+  const cityResources = [
     {
-      title: 'Property Tax Guide',
-      description: 'Comprehensive guide to understanding property taxes and abatement processes.',
-      image: '/images/tax-guide.jpg',
-      downloadLink: '/resources/property-tax-guide.pdf',
+      title: 'Eclipse Login',
+      description: 'Access the Philadelphia Licensing and Inspections Management System.',
+      link: 'https://eclipse.phila.gov/phillylmsprod/pub/lms/Login.aspx',
     },
     {
-      title: 'Permit Application Templates',
-      description: 'Ready-to-use templates for common permit applications.',
-      image: '/images/permit-templates.jpg',
-      downloadLink: '/resources/permit-templates.zip',
+      title: 'Permit Information',
+      description: 'Building and repair permit information from the City of Philadelphia.',
+      link: 'https://www.phila.gov/services/permits-violations-licenses/apply-for-a-permit/building-and-repair-permits/',
     },
     {
-      title: 'Rental License Checklist',
-      description: 'Complete checklist for rental property licensing requirements.',
-      image: '/images/rental-checklist.jpg',
-      downloadLink: '/resources/rental-checklist.pdf',
+      title: 'Licensing Information',
+      description: 'Trade, rental, and other licensing requirements and applications.',
+      link: 'https://www.phila.gov/services/permits-violations-licenses/get-a-license/',
     },
     {
-      title: 'Legal Document Templates',
-      description: 'Standard templates for common real estate legal documents.',
-      image: '/images/legal-templates.jpg',
-      downloadLink: '/resources/legal-templates.pdf',
+      title: 'City Bill Payments',
+      description: 'Pay your Philadelphia city bills online.',
+      link: 'https://epay.phila.gov/paymentcenter/accountlookup/',
+    },
+    {
+      title: 'Tax Services',
+      description: 'Philadelphia tax services, payments, and assistance.',
+      link: 'https://www.phila.gov/services/payments-assistance-taxes/taxes/',
+    },
+    {
+      title: 'PHA Portal',
+      description: 'Philadelphia Housing Authority online portal.',
+      link: 'https://pha.hcvportal.org/Account/Login?ReturnUrl=%2F',
     },
   ];
 
-  const faqs = [
+  const financialResources = [
     {
-      question: 'How long does the tax abatement process typically take?',
-      answer: 'The tax abatement process typically takes 3-6 months from filing to decision. However, this timeline can vary depending on the jurisdiction and complexity of your case.',
+      title: 'Line of Credit Guide',
+      description: 'Understanding business lines of credit for cash flow management.',
+      link: 'https://www.investopedia.com/terms/l/lineofcredit.asp',
     },
     {
-      question: 'What documents do I need for a rental license?',
-      answer: 'Required documents typically include property deed, certificate of occupancy, proof of insurance, inspection reports, and completed application forms. Specific requirements may vary by location.',
+      title: 'HELOC Explained',
+      description: 'Complete guide to Home Equity Lines of Credit.',
+      link: 'https://www.investopedia.com/home-equity-line-of-credit-heloc-definition-5217473',
     },
     {
-      question: 'How often do I need to renew my rental license?',
-      answer: 'Most rental licenses need to be renewed annually. However, some jurisdictions may require renewal every 2-3 years. We recommend checking your local regulations.',
-    },
-    {
-      question: 'What types of permits can be filed as EZ permits?',
-      answer: 'EZ permits typically cover minor alterations, repairs, and replacements. This may include water heater replacements, minor electrical work, and basic plumbing repairs.',
+      title: 'Smart Funding Tips',
+      description: 'Creative strategies for managing credit and accessing funds.',
+      link: 'https://financebuzz.com/clever-credit-card-debt-payoff-heloc-g?keyword=e8607f36-cdea-42a5-993c-222a1c6746f1&campaignid=13ff2635-4c08-4625-b6f8-18397f1cceff&adgroupid=87df68fd-74ca-4cfa-bd45-22a9cd2f9fb8',
     },
   ];
 
-  const externalResources = [
+  const recommendedBooks = [
     {
-      title: 'Philadelphia Tax Services',
-      description: 'Official Philadelphia website for property tax information, payments, and services.',
-      link: 'https://tax-services.phila.gov/_/',
+      title: 'Question Behind the Question',
+      author: 'John C Miller',
+      description: 'Personal accountability in business and life.',
     },
     {
-      title: 'Philadelphia L&I Permits',
-      description: 'Access Philadelphia permit applications, licenses, and building code information.',
-      link: 'https://permits.phila.gov/',
+      title: 'The Dip',
+      author: 'Seth Godin',
+      description: 'Strategic quitting and perseverance in business.',
     },
     {
-      title: 'Philadelphia Housing Authority',
-      description: 'Housing resources, regulations, and assistance programs in Philadelphia.',
-      link: 'https://www.pha.phila.gov/housing/',
+      title: 'Linchpin',
+      author: 'Seth Godin',
+      description: 'Becoming indispensable in your organization.',
+    },
+    {
+      title: 'E-Myth Revisited',
+      author: 'Michael Gerber',
+      description: 'Why most small businesses don\'t work and what to do about it.',
+    },
+    {
+      title: 'Attitude 101',
+      author: 'Maxwell',
+      description: 'Understanding and developing a positive attitude.',
+    },
+    {
+      title: 'The Lean StartUp',
+      author: 'Eric Ries',
+      description: 'Building a sustainable business through continuous innovation.',
+    },
+    {
+      title: 'Rework',
+      author: 'Jason Fried and David Heinemeier Hansson',
+      description: 'A different way to think about business and work.',
+    },
+    {
+      title: 'Getting Things Done',
+      author: 'David Allen',
+      description: 'The art of stress-free productivity.',
+    },
+    {
+      title: 'Delivering Happiness',
+      author: 'Tony Hsieh',
+      description: 'A path to profits, passion, and purpose.',
+    },
+    {
+      title: 'Good to Great',
+      author: 'Jim Collins',
+      description: 'Why some companies make the leap and others don\'t.',
     },
   ];
 
@@ -101,10 +126,9 @@ const ResourcesPage: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         sx={{
-          bgcolor: 'primary.main',
-          color: 'primary.contrastText',
-          py: 8,
-          mb: 6,
+          bgcolor: 'background.paper',
+          pt: 8,
+          pb: 6,
         }}
       >
         <Container maxWidth="lg">
@@ -112,69 +136,52 @@ const ResourcesPage: React.FC = () => {
             component="h1"
             variant="h2"
             align="center"
+            color="primary"
             gutterBottom
-            sx={{ fontWeight: 700 }}
           >
-            Resources & Downloads
+            Resources
           </Typography>
           <Typography
             variant="h5"
             align="center"
+            color="text.secondary"
             paragraph
-            sx={{ maxWidth: '800px', mx: 'auto', mb: 4 }}
           >
-            Access our collection of guides, templates, and educational materials to help you navigate
-            real estate management effectively.
+            Access essential tools, guides, and recommendations to help your business thrive.
           </Typography>
         </Container>
       </MuiBox>
 
-      {/* Downloadable Resources Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Typography variant="h3" component="h2" gutterBottom>
-          Downloadable Resources
+      {/* City Resources Section */}
+      <Container maxWidth="lg" sx={{ mt: 8, mb: 6 }}>
+        <Typography variant="h3" gutterBottom color="primary">
+          City Resources
         </Typography>
         <Grid container spacing={4}>
-          {resources.map((resource, index) => (
-            <Grid item key={resource.title} xs={12} sm={6}>
+          {cityResources.map((resource, index) => (
+            <Grid item key={resource.title} xs={12} sm={6} md={4}>
               <Card
                 component={motion.div}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  '&:hover': {
-                    boxShadow: theme.shadows[10],
-                    transform: 'translateY(-4px)',
-                    transition: 'all 0.3s ease-in-out',
-                  },
-                }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={resource.image}
-                  alt={resource.title}
-                  sx={{ objectFit: 'cover' }}
-                />
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h3">
+                  <Typography gutterBottom variant="h5" component="h2">
                     {resource.title}
                   </Typography>
                   <Typography color="text.secondary" paragraph>
                     {resource.description}
                   </Typography>
                   <Button
-                    variant="contained"
-                    startIcon={<FaDownload />}
-                    href={resource.downloadLink}
+                    endIcon={<FaExternalLinkAlt />}
+                    component={Link}
+                    href={resource.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Download
+                    Access Resource
                   </Button>
                 </CardContent>
               </Card>
@@ -183,73 +190,69 @@ const ResourcesPage: React.FC = () => {
         </Grid>
       </Container>
 
-      {/* FAQ Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Typography variant="h3" component="h2" gutterBottom>
-          Frequently Asked Questions
-        </Typography>
-        {faqs.map((faq, index) => (
-          <Accordion
-            key={index}
-            expanded={expandedFaq === `panel${index}`}
-            onChange={handleFaqChange(`panel${index}`)}
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            sx={{ mb: 1 }}
-          >
-            <AccordionSummary
-              expandIcon={<FaChevronDown />}
-              sx={{ '&:hover': { bgcolor: 'action.hover' } }}
-            >
-              <Typography variant="h6">{faq.question}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography color="text.secondary">{faq.answer}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </Container>
-
-      {/* External Resources Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Typography variant="h3" component="h2" gutterBottom>
-          External Resources
+      {/* Financial Resources Section */}
+      <Container maxWidth="lg" sx={{ mb: 6 }}>
+        <Typography variant="h3" gutterBottom color="primary">
+          Financial Resources
         </Typography>
         <Grid container spacing={4}>
-          {externalResources.map((resource, index) => (
-            <Grid item key={resource.title} xs={12} md={4}>
+          {financialResources.map((resource, index) => (
+            <Grid item key={resource.title} xs={12} sm={6} md={4}>
               <Card
                 component={motion.div}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                sx={{ height: '100%' }}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="h3">
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
                     {resource.title}
                   </Typography>
                   <Typography color="text.secondary" paragraph>
                     {resource.description}
                   </Typography>
-                  <Link
+                  <Button
+                    endIcon={<FaExternalLinkAlt />}
+                    component={Link}
                     href={resource.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1,
-                      color: 'primary.main',
-                      textDecoration: 'none',
-                      '&:hover': { textDecoration: 'underline' },
-                    }}
                   >
-                    Visit Website
-                    <FaExternalLinkAlt size="0.8em" />
-                  </Link>
+                    Learn More
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      {/* Book Recommendations Section */}
+      <Container maxWidth="lg" sx={{ mb: 8 }}>
+        <Typography variant="h3" gutterBottom color="primary">
+          Recommended Reading
+        </Typography>
+        <Grid container spacing={4}>
+          {recommendedBooks.map((book, index) => (
+            <Grid item key={book.title} xs={12} sm={6} md={4}>
+              <Card
+                component={motion.div}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+              >
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {book.title}
+                  </Typography>
+                  <Typography variant="subtitle1" color="primary" gutterBottom>
+                    by {book.author}
+                  </Typography>
+                  <Typography color="text.secondary">
+                    {book.description}
+                  </Typography>
                 </CardContent>
               </Card>
             </Grid>
