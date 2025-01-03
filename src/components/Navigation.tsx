@@ -11,7 +11,6 @@ import {
   Toolbar,
   Typography,
   useTheme,
-  useMediaQuery,
   Button,
   Container,
   Slide,
@@ -29,7 +28,6 @@ import {
   LocalFireDepartment as CandlesIcon,
   Close as CloseIcon,
 } from '@mui/icons-material';
-import { AnimatePresence } from 'framer-motion';
 
 interface Props {
   window?: () => Window;
@@ -58,73 +56,63 @@ function HideOnScroll(props: HideOnScrollProps) {
   );
 }
 
-const Navigation = (props: Props) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+function Navigation(props: Props) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
   const location = useLocation();
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const navItems: NavItem[] = [
     { text: 'Home', path: '/', icon: <HomeIcon /> },
     { text: 'About', path: '/about', icon: <InfoIcon /> },
     { text: 'Services', path: '/services', icon: <ServicesIcon /> },
     { text: 'Resources', path: '/resources', icon: <ResourcesIcon /> },
-    { text: 'Candles', path: '/candles', icon: <CandlesIcon /> },
     { text: 'Consultation', path: '/consultation', icon: <ConsultationIcon /> },
     { text: 'Contact', path: '/contact', icon: <ContactIcon /> },
+    { text: 'Candles', path: '/candles', icon: <CandlesIcon /> },
   ];
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <Box
-      sx={{
-        height: '100%',
-        backgroundColor: 'background.paper',
-        py: 2,
-      }}
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: 'center' }}
+      role="navigation"
+      aria-label="mobile navigation"
     >
-      <Box sx={{ textAlign: 'right', px: 2, mb: 2 }}>
-        <IconButton onClick={handleDrawerToggle} sx={{ color: 'text.primary' }}>
-          <CloseIcon />
-        </IconButton>
-      </Box>
+      <Typography
+        variant="h6"
+        component="div"
+        sx={{
+          my: 2,
+          fontFamily: '"Afacad", sans-serif',
+          background: theme.palette.background.gradient,
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        Element's Insights
+      </Typography>
       <List>
         {navItems.map((item) => (
           <ListItem
             key={item.text}
             component={Link}
             to={item.path}
-            onClick={handleDrawerToggle}
             sx={{
-              color: isActive(item.path) ? 'primary.main' : 'text.primary',
-              backgroundColor: isActive(item.path) ? 'action.selected' : 'transparent',
+              color: location.pathname === item.path ? 'primary.main' : 'text.primary',
               '&:hover': {
-                backgroundColor: 'action.hover',
+                backgroundColor: 'rgba(0, 0, 0, 0.04)',
               },
-              borderRadius: 1,
-              mx: 1,
-              mb: 1,
             }}
           >
-            <ListItemIcon
-              sx={{
-                color: isActive(item.path) ? 'primary.main' : 'text.primary',
-                minWidth: 40,
-              }}
-            >
-              {item.icon}
-            </ListItemIcon>
-            <ListItemText
+            <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
+            <ListItemText 
               primary={item.text}
               primaryTypographyProps={{
-                fontWeight: isActive(item.path) ? 600 : 400,
+                sx: { fontWeight: location.pathname === item.path ? 600 : 400 }
               }}
             />
           </ListItem>
@@ -134,126 +122,96 @@ const Navigation = (props: Props) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <>
       <HideOnScroll {...props}>
-        <AppBar position="fixed" elevation={0} 
-          sx={{
-            background: 'rgba(142, 68, 173, 0.95)', // Matching the primary color with some transparency
+        <AppBar 
+          component="nav"
+          sx={{ 
+            backgroundColor: 'transparent',
             backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)', // For Safari
-            borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-            color: '#fff',
-            '& .MuiToolbar-root': {
-              minHeight: { xs: '64px', md: '80px' },
-            },
-            '& .MuiButton-root': {
-              color: '#fff',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              },
-            },
-            '& .MuiIconButton-root': {
-              color: '#fff',
-            },
-            '& .active': {
-              backgroundColor: 'rgba(255, 255, 255, 0.15)',
-              fontWeight: 600,
-            },
-          }}>
+            WebkitBackdropFilter: 'blur(10px)',
+          }}
+          role="banner"
+        >
           <Container maxWidth="lg">
-            <Toolbar disableGutters>
-              {/* Logo Text */}
+            <Toolbar sx={{ justifyContent: 'space-between' }}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ display: { sm: 'none' } }}
+              >
+                {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+              
               <Typography
                 variant="h6"
                 component={Link}
                 to="/"
                 sx={{
+                  flexGrow: 1,
                   textDecoration: 'none',
-                  color: '#fff',
-                  fontWeight: 700,
-                  letterSpacing: 1.2,
-                  fontSize: { xs: '1.3rem', md: '1.6rem' },
-                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
-                  position: 'relative',
-                  zIndex: 1,
-                  display: 'inline-block',
-                  padding: '4px 8px',
-                  borderRadius: 1,
-                  transition: 'all 0.2s ease-in-out',
-                  '&:hover': {
-                    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)',
-                    transform: 'scale(1.02)',
-                  },
+                  color: 'inherit',
+                  fontFamily: '"Afacad", sans-serif',
+                  fontSize: { xs: '1.2rem', sm: '1.5rem' },
                 }}
               >
                 Element's Insights
               </Typography>
 
-              {/* Mobile Menu Button */}
-              {isMobile ? (
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  sx={{ ml: 'auto' }}
-                >
-                  {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-                </IconButton>
-              ) : (
-                <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 2 }}>
-                  {navItems.map((item) => (
-                    <Button
-                      key={item.text}
-                      component={Link}
-                      to={item.path}
-                      className={isActive(item.path) ? 'active' : ''}
-                      startIcon={item.icon}
-                      sx={{
-                        px: 2,
-                        py: 1,
-                        borderRadius: 1,
-                        fontWeight: isActive(item.path) ? 600 : 400,
-                        transition: 'all 0.2s ease-in-out',
-                      }}
-                    >
-                      {item.text}
-                    </Button>
-                  ))}
-                </Box>
-              )}
+              <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
+                {navItems.map((item) => (
+                  <Button
+                    key={item.text}
+                    component={Link}
+                    to={item.path}
+                    sx={{
+                      color: 'white',
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      },
+                      ...(location.pathname === item.path && {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        fontWeight: 600,
+                      }),
+                    }}
+                    aria-current={location.pathname === item.path ? 'page' : undefined}
+                  >
+                    {item.text}
+                  </Button>
+                ))}
+              </Box>
             </Toolbar>
           </Container>
         </AppBar>
       </HideOnScroll>
-
+      
+      <Box component="nav">
+        <Drawer
+          variant="temporary"
+          anchor="left"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: 240,
+              backgroundColor: theme.palette.background.paper,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      
       <Toolbar /> {/* Spacer */}
-
-      <AnimatePresence>
-        {isMobile && (
-          <Drawer
-            variant="temporary"
-            anchor="right"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile
-            }}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-              '& .MuiDrawer-paper': {
-                boxSizing: 'border-box',
-                width: 280,
-              },
-            }}
-          >
-            {drawer}
-          </Drawer>
-        )}
-      </AnimatePresence>
-    </Box>
+    </>
   );
-};
+}
 
 export default Navigation;
