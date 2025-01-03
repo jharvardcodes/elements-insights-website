@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
@@ -15,13 +15,11 @@ import {
   Checkbox,
   FormGroup,
   Slider,
-  Rating,
   Snackbar,
   Alert,
   CircularProgress,
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBuilding, FaHome, FaStore, FaWarehouse } from 'react-icons/fa';
 import { useConsultationForm } from '../services/formService';
 
 interface FormData {
@@ -69,10 +67,10 @@ const initialFormData: FormData = {
 };
 
 const ConsultationPage: React.FC = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [formData, setFormData] = React.useState<FormData>(initialFormData);
   const { state, handleSubmit } = useConsultationForm();
-  const [snackbar, setSnackbar] = useState({
+  const [snackbar, setSnackbar] = React.useState({
     open: false,
     message: '',
     severity: 'success' as 'success' | 'error'

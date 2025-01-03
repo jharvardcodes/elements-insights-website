@@ -7,11 +7,9 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Button,
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import CandleOrderForm from '../components/CandleOrderForm';
 
 // Candle product data with realistic scents and descriptions
@@ -74,7 +72,6 @@ const candleProducts = [
 
 const CandlesPage: React.FC = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
 
   return (
     <MuiBox>
