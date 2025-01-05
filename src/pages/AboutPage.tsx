@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { FaBuilding, FaHandshake, FaChartLine, FaUsers } from 'react-icons/fa';
+import Image from '../components/Image';
 
 const AboutPage = () => {
   const theme = useTheme();
@@ -133,20 +134,28 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Avatar
-                src={leadership.image}
-                alt={leadership.name}
+              <MuiBox
                 sx={{
                   width: '300px',
                   height: '300px',
                   mx: 'auto',
-                  display: 'block',
+                  position: 'relative',
                   mb: 3,
-                  boxShadow: theme.shadows[3],
-                  border: `4px solid ${theme.palette.primary.main}`,
-                  borderRadius: '50%',
                 }}
-              />
+              >
+                <Image
+                  src={leadership.image}
+                  alt={leadership.name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '50%',
+                    border: `4px solid ${theme.palette.primary.main}`,
+                    boxShadow: theme.shadows[3],
+                  }}
+                />
+              </MuiBox>
               <Typography variant="h4" gutterBottom color="primary">
                 {leadership.name}
               </Typography>

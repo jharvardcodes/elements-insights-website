@@ -6,11 +6,11 @@ import {
   Grid,
   Card,
   CardContent,
-  CardMedia,
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import CandleOrderForm from '../components/CandleOrderForm';
+import Image from '../components/Image';
 
 // Candle product data with realistic scents and descriptions
 const candleProducts = [
@@ -130,26 +130,24 @@ const CandlesPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card
-                sx={{
+              <Card 
+                sx={{ 
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  transition: 'all 0.2s ease-in-out',
+                  transition: 'transform 0.3s ease-in-out',
                   '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: theme.shadows[4],
+                    transform: 'scale(1.02)',
                   },
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="300"
-                  image={product.image}
+                <Image
+                  src={product.image}
                   alt={product.name}
-                  sx={{ 
+                  style={{
+                    width: '100%',
+                    height: '300px',
                     objectFit: 'cover',
-                    borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
                   }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
