@@ -9,6 +9,7 @@
     "@formspree/react": "^2.5.1",
     "@mui/icons-material": "^5.15.3",
     "@mui/material": "^5.15.3",
+    "@supabase/supabase-js": "^2.47.10",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Container,
@@ -21,6 +21,8 @@ import {
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useConsultationForm } from '../services/formService';
+import { useLocation } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 interface FormData {
   needs: string[];
@@ -42,6 +44,7 @@ interface FormData {
   contactEmail: string;
   contactPhone: string;
   additionalInfo: string;
+  service: string;
 }
 
 const initialFormData: FormData = {
@@ -64,9 +67,14 @@ const initialFormData: FormData = {
   contactEmail: '',
   contactPhone: '',
   additionalInfo: '',
+  service: '',
 };
 
 const ConsultationPage: React.FC = () => {
+  const theme = useTheme();
+  const location = useLocation();
+  const selectedService = location.state?.service || '';
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [formData, setFormData] = React.useState<FormData>(initialFormData);
   const { state, handleSubmit } = useConsultationForm();
@@ -75,6 +83,15 @@ const ConsultationPage: React.FC = () => {
     message: '',
     severity: 'success' as 'success' | 'error'
   });
+
+  useEffect(() => {
+    if (selectedService) {
+      setFormData(prev => ({
+        ...prev,
+        service: selectedService
+      }));
+    }
+  }, [selectedService]);
 
   const handleNext = () => {
     setActiveStep((prev) => prev + 1);

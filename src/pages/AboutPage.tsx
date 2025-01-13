@@ -1,19 +1,19 @@
 import React from 'react';
+import { Container, Grid, Box, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
+import { EditableContent } from '../components/EditableContent';
+import { EditableButton } from '../components/EditableButton';
 import {
   Box as MuiBox,
-  Container,
-  Typography,
-  Grid,
   Card,
   CardContent,
   useTheme,
   Avatar,
 } from '@mui/material';
-import { motion } from 'framer-motion';
 import { FaBuilding, FaHandshake, FaChartLine, FaUsers } from 'react-icons/fa';
 import Image from '../components/Image';
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   const theme = useTheme();
 
   const stats = [
@@ -63,71 +63,52 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
 
   const values = [
     {
+      title: 'Efficiency',
+      description: 'We value the power of streamlined processes that drive operational excellence and reduce costs, creating sustainable solutions that benefit our clients and communities.',
+    },
+    {
+      title: 'Growth',
+      description: 'We are committed to fostering growth through continuous improvement, innovation, and strategic planning, ensuring that every client can achieve their full potential.',
+    },
+    {
       title: 'Integrity',
-      description: 'We maintain the highest standards of professional ethics and transparency in all our dealings.',
+      description: 'We hold ourselves to the highest ethical standards, promoting transparency, honesty, and accountability in every decision and action we take.',
     },
     {
-      title: 'Excellence',
-      description: 'We strive for excellence in every service we provide, ensuring the best outcomes for our clients.',
+      title: 'Collaboration',
+      description: 'We believe in the strength of partnerships. By working closely with clients, vendors, and teams, we create mutually beneficial relationships that lead to success.',
     },
     {
-      title: 'Innovation',
-      description: 'We continuously adapt and improve our processes to better serve our clients\' needs.',
+      title: 'Compassion',
+      description: 'We prioritize people in everything we do, advocating for both the welfare of your business and the professional development within the business for your team and client organizations.',
     },
     {
-      title: 'Client-Centric',
-      description: 'Our clients\' success is our primary focus, driving every decision we make.',
+      title: 'Empowerment',
+      description: 'We are dedicated to educating and equipping our clients and teams with the tools and knowledge they need to thrive in a dynamic business environment.',
     },
   ];
 
   return (
-    <MuiBox>
-      {/* Hero Section */}
-      <MuiBox
-        component={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        sx={{
-          background: theme.palette.background.gradient,
-          color: 'white',
-          py: 8,
-          mb: 6,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            gutterBottom
-            sx={{ 
-              fontWeight: 700,
-              textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}
-          >
-            About Element's Insights
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            paragraph
-            sx={{ 
-              maxWidth: '800px', 
-              mx: 'auto', 
-              mb: 4,
-              textShadow: '0 1px 2px rgba(0,0,0,0.1)'
-            }}
-          >
-            Your trusted partner in business operations and development, providing expert guidance
-            and innovative solutions for sustainable growth.
-          </Typography>
-        </Container>
-      </MuiBox>
+    <Container maxWidth="lg">
+      <Box sx={{ my: 4 }}>
+        {/* Hero Section */}
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <EditableContent
+            pageName="about"
+            contentKey="hero_title"
+            defaultValue="About Element's Insights"
+            variant="h1"
+          />
+          <EditableContent
+            pageName="about"
+            contentKey="hero_subtitle"
+            defaultValue="Your trusted partner in business operations and development, providing expert guidance and innovative solutions for sustainable growth."
+            variant="subtitle1"
+          />
+        </Box>
 
-      {/* About Crystal Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Grid container spacing={6} alignItems="flex-start">
+        {/* About Crystal Section */}
+        <Grid container spacing={6} sx={{ mb: 6 }}>
           <Grid item xs={12} md={4}>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -156,14 +137,29 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
                   }}
                 />
               </MuiBox>
-              <Typography variant="h4" gutterBottom color="primary">
-                {leadership.name}
+              <Typography variant="h2" gutterBottom color="primary">
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_name"
+                  defaultValue={leadership.name}
+                  variant="h2"
+                />
               </Typography>
-              <Typography variant="subtitle1" gutterBottom color="text.secondary" sx={{ mb: 3 }}>
-                {leadership.role}
+              <Typography variant="body1" gutterBottom color="text.secondary" sx={{ mb: 3 }}>
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_role"
+                  defaultValue={leadership.role}
+                  variant="body1"
+                />
               </Typography>
               <Typography variant="body1" paragraph>
-                {leadership.bio}
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_bio"
+                  defaultValue={leadership.bio}
+                  multiline={true}
+                />
               </Typography>
             </motion.div>
           </Grid>
@@ -173,48 +169,144 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 3 }}>
-                Professional Journey
+              <Typography variant="h3" gutterBottom color="primary" sx={{ mb: 3 }}>
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_professional_journey_title"
+                  defaultValue="Professional Journey"
+                  variant="h3"
+                />
               </Typography>
               <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
-                {leadership.professionalJourney}
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_professional_journey"
+                  defaultValue={leadership.professionalJourney}
+                  multiline={true}
+                />
               </Typography>
               
-              <Typography variant="h5" gutterBottom color="primary" sx={{ mt: 4, mb: 2 }}>
-                Key Skills
+              <Typography variant="h3" gutterBottom color="primary" sx={{ mt: 4, mb: 2 }}>
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_key_skills_title"
+                  defaultValue="Key Skills"
+                  variant="h3"
+                />
               </Typography>
               <Grid container spacing={2} sx={{ mb: 4 }}>
                 {leadership.keySkills.map((skill, index) => (
                   <Grid item xs={12} sm={6} key={index}>
-                    <Typography variant="body1">• {skill}</Typography>
+                    <Typography variant="body1"> <EditableContent
+                      pageName="about"
+                      contentKey={`leadership_key_skill_${index}`}
+                      defaultValue={skill}
+                      variant="body1"
+                    /></Typography>
                   </Grid>
                 ))}
               </Grid>
 
-              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 2 }}>
-                Education
+              <Typography variant="h3" gutterBottom color="primary" sx={{ mb: 2 }}>
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_education_title"
+                  defaultValue="Education"
+                  variant="h3"
+                />
               </Typography>
               <Typography variant="body1" paragraph>
-                {leadership.education}
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_education"
+                  defaultValue={leadership.education}
+                  multiline={true}
+                />
               </Typography>
 
-              <Typography variant="h5" gutterBottom color="primary" sx={{ mb: 2 }}>
-                Beyond the Office
+              <Typography variant="h3" gutterBottom color="primary" sx={{ mb: 2 }}>
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_personal_title"
+                  defaultValue="Beyond the Office"
+                  variant="h3"
+                />
               </Typography>
               <Typography variant="body1" paragraph>
-                {leadership.personal}
+                <EditableContent
+                  pageName="about"
+                  contentKey="leadership_personal"
+                  defaultValue={leadership.personal}
+                  multiline={true}
+                />
               </Typography>
             </motion.div>
           </Grid>
         </Grid>
-      </Container>
 
-      {/* Stats Section */}
-      <MuiBox sx={{ bgcolor: 'background.paper', py: 8, mb: 8 }}>
-        <Container maxWidth="lg">
+        {/* Stats Section */}
+        <MuiBox sx={{ bgcolor: 'background.paper', py: 8, mb: 8 }}>
+          <Container maxWidth="lg">
+            <Grid container spacing={4}>
+              {stats.map((stat, index) => (
+                <Grid item key={stat.label} xs={6} md={3}>
+                  <Card
+                    component={motion.div}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    sx={{
+                      height: '100%',
+                      textAlign: 'center',
+                      bgcolor: 'transparent',
+                      boxShadow: 'none',
+                    }}
+                  >
+                    <CardContent>
+                      <MuiBox sx={{ color: 'primary.main', mb: 2 }}>{stat.icon}</MuiBox>
+                      <Typography variant="h2" component="div" gutterBottom>
+                        <EditableContent
+                          pageName="about"
+                          contentKey={`stat_${index}_value`}
+                          defaultValue={stat.value}
+                          variant="h2"
+                        />
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary">
+                        <EditableContent
+                          pageName="about"
+                          contentKey={`stat_${index}_label`}
+                          defaultValue={stat.label}
+                          variant="body1"
+                        />
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </MuiBox>
+
+        {/* Values Section */}
+        <Container maxWidth="lg" sx={{ mb: 8 }}>
+          <Typography
+            variant="h2"
+            align="center"
+            gutterBottom
+            sx={{ mb: 6 }}
+            color="primary"
+          >
+            <EditableContent
+              pageName="about"
+              contentKey="values_title"
+              defaultValue="Our Values"
+              variant="h2"
+            />
+          </Typography>
           <Grid container spacing={4}>
-            {stats.map((stat, index) => (
-              <Grid item key={stat.label} xs={6} md={3}>
+            {values.map((value, index) => (
+              <Grid item key={value.title} xs={12} sm={6} md={4}>
                 <Card
                   component={motion.div}
                   initial={{ opacity: 0, y: 20 }}
@@ -222,18 +314,31 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   sx={{
                     height: '100%',
-                    textAlign: 'center',
-                    bgcolor: 'transparent',
-                    boxShadow: 'none',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      transition: 'transform 0.3s ease-in-out',
+                      boxShadow: (theme) => theme.shadows[4]
+                    }
                   }}
                 >
-                  <CardContent>
-                    <MuiBox sx={{ color: 'primary.main', mb: 2 }}>{stat.icon}</MuiBox>
-                    <Typography variant="h3" component="div" gutterBottom>
-                      {stat.value}
+                  <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                    <Typography variant="h4" component="h3" gutterBottom color="primary" sx={{ mb: 2 }}>
+                      <EditableContent
+                        pageName="about"
+                        contentKey={`value_${index}_title`}
+                        defaultValue={value.title}
+                        variant="h4"
+                      />
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      {stat.label}
+                    <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                      <EditableContent
+                        pageName="about"
+                        contentKey={`value_${index}_description`}
+                        defaultValue={value.description}
+                        multiline={true}
+                      />
                     </Typography>
                   </CardContent>
                 </Card>
@@ -241,43 +346,8 @@ Crystal had also served as Property Manager, where she led efforts to minimize t
             ))}
           </Grid>
         </Container>
-      </MuiBox>
-
-      {/* Values Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
-        <Typography
-          variant="h3"
-          align="center"
-          gutterBottom
-          sx={{ mb: 6 }}
-          color="primary"
-        >
-          Our Values
-        </Typography>
-        <Grid container spacing={4}>
-          {values.map((value, index) => (
-            <Grid item key={value.title} xs={12} sm={6} md={3}>
-              <Card
-                component={motion.div}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                sx={{ height: '100%' }}
-              >
-                <CardContent>
-                  <Typography variant="h5" component="h3" gutterBottom color="primary">
-                    {value.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {value.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </MuiBox>
+      </Box>
+    </Container>
   );
 };
 

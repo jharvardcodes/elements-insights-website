@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { theme } from './styles/theme';
 import MainLayout from './layouts/MainLayout';
+import { AdminProvider } from './contexts/AdminContext';
 
 // Lazy load pages
 const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -13,26 +14,66 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
 const ConsultationPage = React.lazy(() => import('./pages/ConsultationPage'));
 const CandlesPage = React.lazy(() => import('./pages/CandlesPage'));
+const AdminDashboard = React.lazy(() => import('./pages/AdminDashboard'));
+const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <MainLayout>
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/resources" element={<ResourcesPage />} />
-              <Route path="/candles" element={<CandlesPage />} />
-              <Route path="/consultation" element={<ConsultationPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </React.Suspense>
-        </MainLayout>
-      </Router>
+      <AdminProvider>
+        <Router>
+          <Routes>
+            <Route path="/admin" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <AdminPage />
+              </React.Suspense>
+            } />
+            <Route path="/admin/dashboard" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <AdminDashboard />
+              </React.Suspense>
+            } />
+            <Route element={<MainLayout />}>
+              <Route path="/" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <HomePage />
+                </React.Suspense>
+              } />
+              <Route path="/services" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <ServicesPage />
+                </React.Suspense>
+              } />
+              <Route path="/resources" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <ResourcesPage />
+                </React.Suspense>
+              } />
+              <Route path="/about" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <AboutPage />
+                </React.Suspense>
+              } />
+              <Route path="/contact" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <ContactPage />
+                </React.Suspense>
+              } />
+              <Route path="/consultation" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <ConsultationPage />
+                </React.Suspense>
+              } />
+              <Route path="/candles" element={
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <CandlesPage />
+                </React.Suspense>
+              } />
+            </Route>
+          </Routes>
+        </Router>
+      </AdminProvider>
     </ThemeProvider>
   );
 }
