@@ -15,6 +15,7 @@ elements-insights-website/
 ├── public/
 │   ├── images/
 │   │   ├── candles/          # Product images
+│   │   │   └── new-candle-designs/
 │   │   ├── headshots/        # Team member photos
 │   │   ├── services/         # Service-related images
 │   │   ├── blog/             # Blog post images
@@ -71,7 +72,7 @@ Core component that handles:
 import ImageOptimizer from '../components/ImageOptimizer';
 
 <ImageOptimizer
-  src="/images/candles/lavender-dream.jpg"
+  src="/images/candles/new-candle-designs/lavender-dream.jpg"
   alt="Lavender Dream Candle"
   sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
   loading="lazy"
@@ -90,7 +91,7 @@ import ProductImage from '../components/ProductImage';
 
 <ProductImage
   productName="Lavender Dream Candle"
-  imagePath="lavender-dream.jpg"
+  imagePath="new-candle-designs/lavender-dream.jpg"
   priority={true}
 />
 ```
@@ -106,7 +107,7 @@ import ProductImage from '../components/ProductImage';
 
 - **Content Images**: Place in `/public/images/[category]/`
   ```tsx
-  <img src="/images/candles/lavender-dream.jpg" />
+  <img src="/images/candles/new-candle-designs/lavender-dream.jpg" />
   ```
 
 ### 2. Image Formats
@@ -128,7 +129,7 @@ Recommended maximum dimensions:
 
 1. **Original Images**
    - Keep high-quality originals in `/public/images/originals/`
-   - Use descriptive filenames: `lavender-dream-candle.jpg`
+   - Use descriptive filenames: `new-candle-designs/lavender-dream-candle.jpg`
    - Maintain aspect ratios appropriate for content type
 
 2. **Performance**

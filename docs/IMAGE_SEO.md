@@ -68,7 +68,7 @@ alt="" // Use empty alt for purely decorative images
 ### Required Metadata
 ```tsx
 <ImageOptimizer
-  src="/images/candles/lavender-dream.jpg"
+  src="/images/candles/new-candle-designs/lavender-dream.jpg"
   alt="Lavender Dream Candle"
   width={800}
   height={800}
@@ -80,7 +80,7 @@ alt="" // Use empty alt for purely decorative images
 ### Open Graph Tags
 ```tsx
 // In your page head
-<meta property="og:image" content="https://elements-insights.com/images/candles/lavender-dream.jpg" />
+<meta property="og:image" content="https://elements-insights.com/images/candles/new-candle-designs/lavender-dream.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Hand-poured Lavender Dream soy candle" />
@@ -95,9 +95,9 @@ const productSchema = {
   "@type": "Product",
   "name": "Lavender Dream Candle",
   "image": [
-    "https://elements-insights.com/images/candles/lavender-dream-1200w.jpg",
-    "https://elements-insights.com/images/candles/lavender-dream-800w.jpg",
-    "https://elements-insights.com/images/candles/lavender-dream-600w.jpg"
+    "https://elements-insights.com/images/candles/new-candle-designs/lavender-dream-1200w.jpg",
+    "https://elements-insights.com/images/candles/new-candle-designs/lavender-dream-800w.jpg",
+    "https://elements-insights.com/images/candles/new-candle-designs/lavender-dream-600w.jpg"
   ],
   "description": "Hand-poured lavender soy candle with dried flowers",
   // ... other product details
@@ -132,7 +132,7 @@ function ProductPage() {
 
 ```tsx
 <ImageOptimizer
-  src="/images/candles/lavender-dream.jpg"
+  src="/images/candles/new-candle-designs/lavender-dream.jpg"
   alt="Lavender Dream Candle"
   sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
   loading="lazy"
@@ -210,10 +210,9 @@ const ImageStructuredData = ({ image }) => (
   <url>
     <loc>https://elements-insights.com/products/lavender-dream-candle</loc>
     <image:image>
-      <image:loc>https://elements-insights.com/images/candles/lavender-dream.jpg</image:loc>
+      <image:loc>https://elements-insights.com/images/candles/new-candle-designs/lavender-dream.jpg</image:loc>
       <image:title>Lavender Dream Candle</image:title>
       <image:caption>Hand-poured lavender soy candle with dried flowers</image:caption>
     </image:image>
   </url>
 </urlset>
-```

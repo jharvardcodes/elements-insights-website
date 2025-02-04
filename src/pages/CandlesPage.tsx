@@ -20,7 +20,7 @@ const fanFavorites = [
     id: 'blend-1',
     name: 'Bamboo Vanilla Blend',
     description: 'Our #1 fan favorite! A perfect harmony of fresh bamboo and warm vanilla creates a soothing, luxurious atmosphere perfect for any room.',
-    image: '/images/candles/vanilla-amber.jpg',
+    image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00',
@@ -30,7 +30,7 @@ const fanFavorites = [
     id: 'blend-2',
     name: 'Orange Cedar Fusion',
     description: 'A beloved blend of citrusy orange and woody cedar notes, creating an invigorating yet cozy ambiance that brings the outdoors in.',
-    image: '/images/candles/autumn-spice.jpg',
+    image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00',
@@ -40,7 +40,7 @@ const fanFavorites = [
     id: 'blend-3',
     name: 'Lavender Bamboo Dream',
     description: 'Fan favorite! Calming lavender meets fresh bamboo for the perfect relaxation blend, ideal for bedrooms and spa-like spaces.',
-    image: '/images/candles/lavender-fields.jpg',
+    image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00',
@@ -54,7 +54,7 @@ const candleProducts = [
     id: 'scent-1',
     name: 'Lavender Serenity',
     description: 'Classic and calming, our lavender candle brings the soothing essence of French lavender fields to your space.',
-    image: '/images/candles/lavender-fields.jpg',
+    image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -63,7 +63,7 @@ const candleProducts = [
     id: 'scent-2',
     name: 'Pure Vanilla',
     description: 'Rich and comforting, this warm vanilla scent creates an inviting atmosphere with its sweet, creamy notes.',
-    image: '/images/candles/vanilla-amber.jpg',
+    image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -72,7 +72,7 @@ const candleProducts = [
     id: 'scent-3',
     name: 'Fresh Bamboo',
     description: 'Clean and refreshing, our bamboo scent brings a zen-like tranquility with its green, natural aroma.',
-    image: '/images/candles/sea-salt-jasmine.jpg',
+    image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -81,7 +81,7 @@ const candleProducts = [
     id: 'scent-4',
     name: 'Cedar Wood',
     description: 'Earthy and grounding, this woody scent evokes the feeling of a peaceful forest retreat.',
-    image: '/images/candles/fresh-linen.jpg',
+    image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -90,7 +90,7 @@ const candleProducts = [
     id: 'scent-5',
     name: 'Black Pepper',
     description: 'Spicy and sophisticated, our black pepper candle adds warmth and intrigue to any space.',
-    image: '/images/candles/autumn-spice.jpg',
+    image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -99,7 +99,7 @@ const candleProducts = [
     id: 'scent-6',
     name: 'Sweet Orange',
     description: 'Bright and uplifting, this citrus scent brings energy and cheerfulness to your home.',
-    image: '/images/candles/eucalyptus-mint.jpg',
+    image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -108,7 +108,7 @@ const candleProducts = [
     id: 'scent-7',
     name: 'Crisp Apple',
     description: 'Fresh and fruity, our apple candle captures the essence of a crisp autumn day.',
-    image: '/images/candles/fresh-linen.jpg',
+    image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -117,7 +117,7 @@ const candleProducts = [
     id: 'scent-8',
     name: 'Sweet Pear',
     description: 'Delicate and sweet, this pear scent offers a light, fresh fragrance perfect for any season.',
-    image: '/images/candles/sea-salt-jasmine.jpg',
+    image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -126,7 +126,7 @@ const candleProducts = [
     id: 'scent-9',
     name: 'Warm Cinnamon',
     description: 'Cozy and inviting, our cinnamon candle creates a warm, spicy atmosphere reminiscent of fresh-baked treats.',
-    image: '/images/candles/eucalyptus-mint.jpg',
+    image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -135,7 +135,7 @@ const candleProducts = [
     id: 'scent-10',
     name: 'Fresh Eucalyptus',
     description: 'Invigorating and clean, this eucalyptus scent brings a spa-like freshness to your space.',
-    image: '/images/candles/vanilla-amber.jpg',
+    image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -144,7 +144,7 @@ const candleProducts = [
     id: 'scent-11',
     name: 'Desert Sage',
     description: 'Earthy and herbaceous, our sage candle creates a grounding atmosphere perfect for meditation and relaxation.',
-    image: '/images/candles/autumn-spice.jpg',
+    image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -153,7 +153,7 @@ const candleProducts = [
     id: 'scent-12',
     name: 'Citronella Fresh',
     description: 'Fresh and natural, this outdoor-friendly scent helps create a pleasant environment on your patio or deck.',
-    image: '/images/candles/lavender-fields.jpg',
+    image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'
@@ -162,7 +162,7 @@ const candleProducts = [
     id: 'scent-13',
     name: 'Cool Peppermint',
     description: 'Refreshing and energizing, our peppermint candle brings a cool, invigorating burst of freshness to any room.',
-    image: '/images/candles/fresh-linen.jpg',
+    image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
     price: '$22.00'

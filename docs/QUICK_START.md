@@ -6,7 +6,7 @@
 
 ```bash
 # 1. Place your image in the correct directory
-cp your-image.jpg public/images/candles/
+cp your-image.jpg public/images/candles/new-candle-designs/
 
 # 2. Run the optimizer
 npm run optimize-images
@@ -20,7 +20,7 @@ import ProductImage from '../components/ProductImage';
 
 <ProductImage
   productName="Your Product Name"
-  imagePath="your-image.jpg"
+  imagePath="new-candle-designs/your-image.jpg"
   priority={true}
 />
 
@@ -28,7 +28,7 @@ import ProductImage from '../components/ProductImage';
 import ImageOptimizer from '../components/ImageOptimizer';
 
 <ImageOptimizer
-  src="/images/your-category/your-image.jpg"
+  src="/images/candles/new-candle-designs/your-image.jpg"
   alt="Descriptive alt text"
   sizes="(max-width: 600px) 100vw, 800px"
 />
@@ -39,6 +39,7 @@ import ImageOptimizer from '../components/ImageOptimizer';
 ```
 public/images/
 ├── candles/      → Product images
+│   └── new-candle-designs/
 ├── headshots/    → Team photos
 ├── services/     → Service images
 ├── blog/         → Blog images
@@ -52,7 +53,7 @@ public/images/
 ```tsx
 <ProductImage
   productName="Lavender Dream"
-  imagePath="lavender-dream.jpg"
+  imagePath="new-candle-designs/lavender-dream.jpg"
   priority={true}
 />
 ```
@@ -86,7 +87,7 @@ public/images/
 
 ## 🔍 SEO Checklist
 
-- [ ] Descriptive file name (e.g., lavender-dream-candle.jpg)
+- [ ] Descriptive file name (e.g., new-candle-designs/lavender-dream-candle.jpg)
 - [ ] Meaningful alt text
 - [ ] Image dimensions specified
 - [ ] Structured data added for product images
