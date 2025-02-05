@@ -185,11 +185,75 @@ const singleScents = [
   'Peppermint'
 ];
 
+// Product features
+const productFeatures = [
+  {
+    id: 'cruelty-free',
+    icon: '/images/features/cruelty-free-icon.svg',
+    title: 'Cruelty Free',
+    description: 'CandleScience and our essential oil manufacturers have similar policies on cruelty-free products. We never test on animals and support cruelty-free alternatives to all animal testing.'
+  },
+  {
+    id: 'non-gmo',
+    icon: '/images/features/non-gmo-icon.svg',
+    title: 'Non-GMO',
+    description: 'Our essential oils are derived from naturally occurring plants, ensuring no genetic material or DNA has been modified in ways that do not occur naturally.'
+  },
+  {
+    id: 'certified-origin',
+    icon: '/images/features/certified-origin-icon.svg',
+    title: 'Certified Origin',
+    description: 'The ingredients for our essential oils are sourced from certified geographical origins, ensuring authenticity and quality.'
+  },
+  {
+    id: 'vegan',
+    icon: '/images/features/vegan-icon.svg',
+    title: 'Vegan Product',
+    description: 'We confirm that to the best of our knowledge, our essential oils are suitable to be used in products compliant with vegan standards.'
+  },
+  {
+    id: 'solvent-free',
+    icon: '/images/features/solvent-free-icon.svg',
+    title: 'Solvent Free',
+    description: 'Our essential oils are made using steam distillation or cold pressing (sometimes referred to as expression) to preserve their purity.'
+  },
+  {
+    id: 'upcycled',
+    icon: '/images/features/upcycled-icon.svg',
+    title: 'Upcycled Sourcing',
+    description: 'Upcycled essential oils are made with the leftover plant material that would have otherwise been discarded from other manufacturing processes.'
+  }
+];
+
 const CandlesPage: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <MuiBox>
+    <Container maxWidth="lg" sx={{ py: 8 }}>
+      {/* Branding Logo */}
+      <Box 
+        sx={{ 
+          mb: 6, 
+          textAlign: 'center',
+          borderBottom: '2px solid',
+          borderColor: 'primary.main',
+          pb: 2
+        }}
+      >
+        <Typography
+          variant="h3"
+          component="h1"
+          sx={{
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 600,
+            color: 'primary.main',
+            letterSpacing: '0.05em'
+          }}
+        >
+          Crystalized Elements<sup style={{ fontSize: '0.5em', top: '-1em' }}>©</sup>
+        </Typography>
+      </Box>
+
       {/* Hero Section */}
       <MuiBox
         component={motion.div}
@@ -229,6 +293,64 @@ const CandlesPage: React.FC = () => {
           </Typography>
         </Container>
       </MuiBox>
+
+      {/* Value Propositions Section */}
+      <Box sx={{ mb: 8 }}>
+        <Typography
+          component="h2"
+          variant="h4"
+          align="center"
+          sx={{ mb: 4 }}
+          gutterBottom
+        >
+          Our Commitment to Quality
+        </Typography>
+        <Grid container spacing={3}>
+          {productFeatures.map((feature) => (
+            <Grid item xs={12} sm={6} md={4} key={feature.id}>
+              <Card
+                component={motion.div}
+                whileHover={{ scale: 1.02 }}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  bgcolor: 'background.paper',
+                  borderRadius: 2,
+                  boxShadow: 1,
+                }}
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      mb: 2,
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={feature.icon}
+                      alt={feature.title}
+                      sx={{
+                        width: 40,
+                        height: 40,
+                        mr: 2,
+                      }}
+                    />
+                    <Typography variant="h6" component="h3">
+                      {feature.title}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" color="text.secondary">
+                    {feature.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
       {/* Fan Favorites Section */}
       <Box sx={{ mb: 8 }}>
@@ -491,7 +613,7 @@ const CandlesPage: React.FC = () => {
         </Typography>
         <CandleOrderForm />
       </MuiBox>
-    </MuiBox>
+    </Container>
   );
 };
 
