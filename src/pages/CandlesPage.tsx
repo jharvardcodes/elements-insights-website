@@ -23,7 +23,7 @@ const fanFavorites = [
     image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00',
+    price: '$24.00',
     isFavorite: true
   },
   {
@@ -33,7 +33,7 @@ const fanFavorites = [
     image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00',
+    price: '$24.00',
     isFavorite: true
   },
   {
@@ -43,7 +43,7 @@ const fanFavorites = [
     image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00',
+    price: '$24.00',
     isFavorite: true
   }
 ];
@@ -57,7 +57,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-2',
@@ -66,7 +66,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-3',
@@ -75,7 +75,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-4',
@@ -84,7 +84,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-5',
@@ -93,7 +93,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-6',
@@ -102,7 +102,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-7',
@@ -111,7 +111,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-8',
@@ -120,7 +120,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-9',
@@ -129,7 +129,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-10',
@@ -138,7 +138,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Green Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-11',
@@ -147,7 +147,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- Black Jar (No Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-12',
@@ -156,7 +156,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- orange jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   },
   {
     id: 'scent-13',
@@ -165,7 +165,7 @@ const candleProducts = [
     image: '/images/candles/New/Candle- pink jar (clear Background).png',
     size: '8 oz',
     burnTime: '40-50 hours',
-    price: '$22.00'
+    price: '$24.00'
   }
 ];
 
@@ -576,7 +576,7 @@ const CandlesPage: React.FC = () => {
             Pricing & Options
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            Standard 8 oz jar: $22.00
+            Standard 8 oz jar: $24.00
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
             Custom jar options available upon request - pricing to be determined based on selection
