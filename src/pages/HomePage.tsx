@@ -17,7 +17,7 @@ import { EditableButton } from '../components/EditableButton';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import Marquee from './components/Marquee';
+import Marquee from '../components/Marquee';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
