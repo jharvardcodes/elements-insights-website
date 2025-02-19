@@ -17,6 +17,7 @@ import { EditableButton } from '../components/EditableButton';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import Marquee from './components/Marquee';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Container maxWidth="lg">
+      <Marquee />
       {/* Hero Section with enhanced styling */}
       <Box
         component="section"

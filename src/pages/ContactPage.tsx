@@ -85,8 +85,8 @@ const ContactPage = () => {
     {
       icon: <FaPhone />,
       title: 'Phone',
-      content: '(267) 449-5925',
-      link: 'tel:+12674495925',
+      content: '(267) 227-4332',
+      link: 'tel:+12672274332',
     },
     {
       icon: <FaEnvelope />,
