@@ -24,6 +24,7 @@ import {
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useContactForm } from '../services/formService';
+import { EditableContent } from '../components/EditableContent';
 
 interface ContactFormData {
   name: string;
@@ -85,19 +86,19 @@ const ContactPage = () => {
     {
       icon: <FaPhone />,
       title: 'Phone',
-      content: '(267) 227-4342',
-      link: 'tel:+12672274342',
+      content: <EditableContent pageName="ContactPage" contentKey="contact_phone_number" defaultValue="(267) 227-4332" />, 
+      link: 'tel:+12672274332',
     },
     {
       icon: <FaEnvelope />,
       title: 'Email',
-      content: 'elementofinsights@gmail.com',
+      content: <EditableContent pageName="ContactPage" contentKey="contact_email_address" defaultValue="elementofinsights@gmail.com" />,
       link: 'mailto:elementofinsights@gmail.com',
     },
     {
       icon: <FaMapMarkerAlt />,
       title: 'Office',
-      content: 'Philadelphia, PA',
+      content: <EditableContent pageName="ContactPage" contentKey="contact_office_location" defaultValue="Philadelphia, PA" />,
       link: 'https://maps.google.com/?q=Philadelphia,PA',
     },
   ];
@@ -105,7 +106,7 @@ const ContactPage = () => {
   const socialLinks = [
     {
       icon: <FaLinkedin />,
-      link: 'https://linkedin.com/company/elements-insights',
+      link: 'https://www.linkedin.com/in/crystal-element-ba70bb30/',
       label: 'LinkedIn',
     },
     {
@@ -197,6 +198,9 @@ const ContactPage = () => {
           >
             <Box sx={{ height: '100%' }}>
               {/* Contact Cards */}
+              <Typography variant="h4" gutterBottom>
+                <EditableContent pageName="ContactPage" contentKey="contact_info_title" defaultValue="Contact Information" variant="h4" />
+              </Typography>
               {contactInfo.map((info, index) => (
                 <Card
                   key={info.title}
