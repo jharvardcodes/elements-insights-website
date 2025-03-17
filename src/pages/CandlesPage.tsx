@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -14,8 +14,28 @@ import { motion } from 'framer-motion';
 import CandleOrderForm from '../components/CandleOrderForm';
 import Image from '../components/Image';
 
-// Fan favorite blends
-const fanFavorites = [
+import { candleService, CandleProduct } from '../services/candleService';
+import { useAdmin } from '../contexts/AdminContext';
+import CandleManager from '../components/admin/CandleManager';
+
+const CandlesPage: React.FC = () => {
+  const { user } = useAdmin();
+  const [products, setProducts] = useState<CandleProduct[]>([]);
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      const data = await candleService.getAllCandles();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error loading products:', error);
+    }
+  };
+
+  const fanFavorites = products.filter(p => p.isFavorite) || [
   {
     id: 'blend-1',
     name: 'Bamboo Vanilla Blend',
@@ -48,8 +68,7 @@ const fanFavorites = [
   }
 ];
 
-// Individual scent candles
-const candleProducts = [
+const individualScents = products.filter(p => !p.isFavorite) || [
   {
     id: 'scent-1',
     name: 'Lavender Serenity',

@@ -16,6 +16,7 @@ const ConsultationPage = React.lazy(() => import('./pages/ConsultationPage'));
 const CandlesPage = React.lazy(() => import('./pages/CandlesPage'));
 const AdminDashboard = React.lazy(() => import('./pages/AdminDashboard'));
 const AdminPage = React.lazy(() => import('./pages/AdminPage'));
+const ManageCandlesPage = React.lazy(() => import('./pages/admin/ManageCandlesPage'));
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
             <Route path="/admin/dashboard" element={
               <React.Suspense fallback={<div>Loading...</div>}>
                 <AdminDashboard />
+              </React.Suspense>
+            } />
+            <Route path="/admin/candles" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <ManageCandlesPage />
               </React.Suspense>
             } />
             <Route element={<MainLayout />}>

@@ -49,7 +49,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "migrate-candles": "ts-node src/scripts/migrateCandleData.ts"
   },
   "eslintConfig": {
     "extends": [
