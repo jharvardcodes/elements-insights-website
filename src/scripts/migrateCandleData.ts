@@ -1,4 +1,4 @@
-import { supabase } from '../services/supabaseClient';
+import { supabase } from '../services/supabaseClient.js';
 
 // Initial candle data from CandlesPage.tsx
 const fanFavorites = [

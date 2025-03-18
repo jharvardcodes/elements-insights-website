@@ -20,6 +20,7 @@ import CandleManager from '../components/admin/CandleManager';
 
 const CandlesPage: React.FC = () => {
   const { user } = useAdmin();
+  const theme = useTheme();
   const [products, setProducts] = useState<CandleProduct[]>([]);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const CandlesPage: React.FC = () => {
     }
   };
 
-  const fanFavorites = products.filter(p => p.isFavorite) || [
+  const fanFavorites = products.filter(p => p.isFavorite).length > 0 ? products.filter(p => p.isFavorite) : [
   {
     id: 'blend-1',
     name: 'Bamboo Vanilla Blend',
@@ -68,7 +69,7 @@ const CandlesPage: React.FC = () => {
   }
 ];
 
-const individualScents = products.filter(p => !p.isFavorite) || [
+  const individualScents = products.filter(p => !p.isFavorite).length > 0 ? products.filter(p => !p.isFavorite) : [
   {
     id: 'scent-1',
     name: 'Lavender Serenity',
@@ -244,8 +245,6 @@ const productFeatures = [
   }
 ];
 
-const CandlesPage: React.FC = () => {
-  const theme = useTheme();
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -470,7 +469,7 @@ const CandlesPage: React.FC = () => {
           Explore our collection of premium individual fragrances
         </Typography>
         <Grid container spacing={4}>
-          {candleProducts.map((product) => (
+          {individualScents.map((product: CandleProduct) => (
             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
               <Card
                 component={motion.div}

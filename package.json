@@ -40,7 +40,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "ts-node": "^10.9.2"
   },
   "scripts": {
     "start": "HOST=0.0.0.0 react-scripts start",
@@ -50,7 +51,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "optimize-images": "node scripts/optimize-images.js",
-    "migrate-candles": "ts-node src/scripts/migrateCandleData.ts"
+    "migrate-candles": "ts-node -P src/scripts/tsconfig.json src/scripts/migrateCandleData.ts"
   },
   "eslintConfig": {
     "extends": [
